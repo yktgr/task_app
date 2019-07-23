@@ -1,0 +1,8 @@
+  <%= form_with(model: @task,local: true) do |form| %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+    <%= form.submit "投稿"%>
+  <% end %>
+  <%= link_to "戻る", :back %>
