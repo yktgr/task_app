@@ -1,4 +1,14 @@
 <h1><%= t('view.show') %></h1>
-  <%= @task.title %>
-  <%= @task.content %>
+  <table>
+
+    <tr><th><%= t('view.title') %></th>
+      <td><%= @task.title %></td></tr>
+    <tr><th><%= t('view.content') %></th>
+      <td><%= @task.content %></td></tr>
+    <tr><th><%= t('view.created_at') %></th>
+      <td><%= @task.created_at.strftime("%Y-%m-%d") %></td></tr>
+    <tr><th><%= t('view.expired_at') %></th>
+      <td><%= @task.expired_at.strftime("%Y-%m-%d") %></td></tr>
+  </table>
+
   <%= link_to t('view.back'), :back %>

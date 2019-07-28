@@ -14,8 +14,9 @@ ja:
         title: タスク名
         content: 内容
         id: ID
-        created_at: 登録日時
-        updated_at: 更新日時
+        created_at: 登録日
+        updated_at: 更新日
+        expired_at: 終了期限
   view:
     index:  一覧
     show: 詳細
@@ -24,6 +25,11 @@ ja:
     delete: 削除
     create: 作成
     back: 戻る
+    title: タスク名
+    content: 内容
+    created_at: 登録日
+    updated_at: 更新日
+    expired_at: 終了期限
 
 
   date:
