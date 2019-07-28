@@ -17,3 +17,9 @@ tasksテーブル
 |title|content|status|priority|user_id|
 |:-:|:-:|:-:|:-:|:-:|
 |string|string|integer|integer|integer|
+
+
+## デプロイ
+  masterブランチに変更があった場合デプロイ
+## インストール
+  rails 5.2.3
