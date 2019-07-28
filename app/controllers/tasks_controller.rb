@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to tasks_path, notice: "作成しました"
     else
-      render new
+      render 'new'
     end
   end
 
@@ -25,7 +25,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to tasks_path, notice: "編集しました"
     else
-      render edit
+      render 'edit'
     end
   end
 
