@@ -16,4 +16,5 @@ RSpec.describe Task, type: :model do
     task = Task.new(title: 'OK', content: 'OK')
     expect(task).to be_valid
   end
-end
+
+  end

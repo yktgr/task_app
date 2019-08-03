@@ -13,15 +13,19 @@
   </tr>
   <tr>
   <th><%= form.label :content %></th>
-  <td><%= form.text_field :content %></td>
+  <td><%= form.text_area :content %></td>
   </tr>
   <tr>
   <th><%= form.label :expired_at %></th>
-  <td><%= form.text_field :expired_at %></td>
+  <td><%= form.date_field :expired_at %></td>
+  </tr>
+  <tr>
+  <th><%= form.label :status %></th>
+  <td><%= form.select :status,[nil,t('view.not_start'),t('view.start'),t('view.finish')] %></td>
   </tr>
   <tr>
   <td><%= form.submit %></td>
-  </tr>
+</tr>
 </table>
 
   <% end %>

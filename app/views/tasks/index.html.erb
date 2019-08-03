@@ -1,10 +1,25 @@
 <h1><%= t('view.index') %></h1>
+<%= form_with(model: Task.new,local: true,method: :get,url:tasks_path) do |form| %>
+    <table>
+    <tr>
+    <th><%= form.label t('view.title') %></th>
+    <td><%= form.text_field :title %></td>
+    <th><%= form.label t('view.status') %></th>
+    <td><%= form.select :status,[nil,t('view.not_start'),t('view.start'),t('view.finish')] %></td>
+    <td><%= form.hidden_field :search, value:'true' %></td>
+    <td><%= form.submit t('view.search') %></td>
+    <td><%= link_to "終了期限でソートする", tasks_path(sort_expired: 'true') %></td>
+    </tr>
+</table>
+<% end %>
+
   <table>
     <tr>
     <th><%= t('view.title') %></th>
     <th><%= t('view.content') %></th>
     <th><%= t('view.created_at') %></th>
     <th><%= t('view.expired_at') %></th>
+    <th><%= t('view.status') %></th>
     </tr>
   <% @tasks.each do |task| %>
     <tr>
@@ -12,11 +27,12 @@
       <td><%= task.content %></td>
       <td><%= task.created_at.strftime("%Y-%m-%d") %></td>
       <td><%= task.expired_at.strftime("%Y-%m-%d") %></td>
+      <td><%= task.status %></td>
       <td><%= link_to t('view.show'),task_path(task.id) %></td>
       <td><%= link_to t('view.edit'),edit_task_path(task.id) %></td>
       <td><%= link_to t('view.delete'),task_path(task.id) ,method: :delete %></td>
       </tr>
   <% end %>
   </table>
-  <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+
   <%= link_to t('view.create'),new_task_path %>
