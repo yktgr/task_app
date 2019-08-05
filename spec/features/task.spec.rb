@@ -22,7 +22,6 @@ RSpec.feature "タスク管理機能", type: :feature do
     fill_in '終了期限', with: '1/31'
     click_button '登録する'
     expect(page).to have_content 'content_test'
-
   end
 
   scenario "タスク詳細のテスト" do
