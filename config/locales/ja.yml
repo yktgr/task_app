@@ -17,6 +17,9 @@ ja:
         created_at: 登録日
         updated_at: 更新日
         expired_at: 終了期限
+        status: ステータス
+
+
   view:
     index:  一覧
     show: 詳細
@@ -30,6 +33,11 @@ ja:
     created_at: 登録日
     updated_at: 更新日
     expired_at: 終了期限
+    status: ステータス
+    not_start: 未着手
+    start: 着手
+    finish: 完了
+    search: 検索
 
 
   date:
