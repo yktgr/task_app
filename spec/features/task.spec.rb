@@ -26,7 +26,7 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タスク詳細のテスト" do
     visit root_path
-    all('tr')[1].click_link '詳細'
+    all('tr')[3].click_link '詳細'
     expect(page).to have_content 'Factoryコンテント2'
     visit root_path
     all('tr')[2].click_link '詳細'

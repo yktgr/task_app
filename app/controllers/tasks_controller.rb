@@ -7,10 +7,10 @@ class TasksController < ApplicationController
               @tasks = Task.all.expired
             elsif params[:task] == nil
               @tasks = Task.all
-            elsif params[:task][:title].present?
+            elsif params[:task][:title].present? && params[:task][:status].blank?
               # @tasks = Task.where('title Like ?',params[:task][:title])
               @tasks = Task.search_title(params[:task][:title])
-            elsif params[:task][:status].present?
+            elsif params[:task][:status].present? && params[:task][:title].blank?
               # @tasks = Task.where('status = ?',params[:task][:status])
               @tasks = Task.search_status(params[:task][:status])
             elsif params[:task][:title].present? && params[:task][:status].present?
