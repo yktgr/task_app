@@ -7,10 +7,23 @@
       </div>
     <% end %>
 
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-    <%= form.submit %>
+<table>
+  <tr>
+  <th><%= form.label :title %></th>
+  <td><%= form.text_field :title %></td>
+  </tr>
+  <tr>
+  <th><%= form.label :content %></th>
+  <td><%= form.text_field :content %></td>
+  </tr>
+  <tr>
+  <th><%= form.label :expired_at %></th>
+  <td><%= form.text_field :expired_at %></td>
+  </tr>
+  <tr>
+  <td><%= form.submit %></td>
+  </tr>
+</table>
+
   <% end %>
   <%= link_to t('view.back'), :back %>
