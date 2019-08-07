@@ -38,6 +38,5 @@ RSpec.describe Task, type: :model do
     tasks = Task.search_all("Factoryタイトル3","着手")
     expect(tasks).to include @task3
   end
-
   end
   end
