@@ -1,23 +1,23 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+  PER = 5
   def index
         if params[:sort_expired]
           # @tasks = Task.all.order(expired_at: :desc)
-              @tasks = Task.all.expired
+              @tasks = Task.all.expired.page(params[:page]).per(PER)
             elsif params[:task] == nil
-              @tasks = Task.all
+              @tasks = Task.page(params[:page]).per(PER)
             elsif params[:task][:title].present? && params[:task][:status].blank?
               # @tasks = Task.where('title Like ?',params[:task][:title])
-              @tasks = Task.search_title(params[:task][:title])
+              @tasks = Task.search_title(params[:task][:title]).page(params[:page]).per(PER)
             elsif params[:task][:status].present? && params[:task][:title].blank?
               # @tasks = Task.where('status = ?',params[:task][:status])
-              @tasks = Task.search_status(params[:task][:status])
+              @tasks = Task.search_status(params[:task][:status]).page(params[:page]).per(PER)
             elsif params[:task][:title].present? && params[:task][:status].present?
               # @tasks = Task.where('title Like ? and status = ?',params[:task][:title],params[:task][:status])
-              @tasks = Task.search_all(params[:task][:title],params[:task][:status])
+              @tasks = Task.search_all(params[:task][:title],params[:task][:status]).page(params[:page]).per(PER)
             elsif params[:task][:search] == "true"
-              @tasks = Task.all
+              @tasks = Task.all.page(params[:page]).per(PER)
         end
   end
 
@@ -60,6 +60,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title,:content,:expired_at,:status)
+    params.require(:task).permit(:title,:content,:expired_at,:status,:priority)
   end
 end

@@ -29,6 +29,10 @@
       %></td>
   </tr>
   <tr>
+  <th><%= form.label :priority %></th>
+  <td><%= form.select :priority, Task.priorities_i18n.keys.map{|k| [Task.priorities_i18n[k], k]} %></td>
+  </tr>
+  <tr>
   <td><%= form.submit %></td>
 </tr>
 </table>

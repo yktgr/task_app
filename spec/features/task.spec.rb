@@ -3,16 +3,17 @@ RSpec.feature "タスク管理機能", type: :feature do
   background do
     FactoryBot.create(:task)
     FactoryBot.create(:second_task)
+    FactoryBot.create(:third_task)
   end
 
   scenario "タスク一覧のテスト" do
     visit root_path
     expect(page).to have_content 'Factoryタイトル1'
     expect(page).to have_content 'Factoryコンテント1'
-    expect(page).to have_content '08-01'
+    expect(page).to have_content '01-01'
     expect(page).to have_content 'Factoryタイトル2'
     expect(page).to have_content 'Factoryコンテント2'
-    expect(page).to have_content '12-01'
+    expect(page).to have_content '02-01'
   end
 
   scenario "タスク作成のテスト" do
@@ -20,6 +21,8 @@ RSpec.feature "タスク管理機能", type: :feature do
     fill_in 'タスク名', with: 'title_test'
     fill_in '内容', with: 'content_test'
     fill_in '終了期限', with: '1/31'
+    select '未着手',from:'ステータス'
+    select '低',from: '優先度'
     click_button '登録する'
     expect(page).to have_content 'content_test'
   end
@@ -35,12 +38,12 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     visit root_path
-     expect(Task.order("created_at DESC").map(&:id)).to eq [9,8]
+     expect(Task.order("created_at DESC").map(&:id)).to eq [13, 12, 11]
   end
 
   scenario "タスクが終了期限の降順に並んでいるかのテスト" do
     visit root_path
     click_link "終了期限でソートする"
-    expect(Task.order("expired_at DESC").map(&:id)).to eq [11,10]
+    expect(Task.order("expired_at DESC").map(&:id)).to eq [16, 15, 14]
   end
 end

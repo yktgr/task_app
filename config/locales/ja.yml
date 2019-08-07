@@ -18,7 +18,14 @@ ja:
         updated_at: 更新日
         expired_at: 終了期限
         status: ステータス
-
+        priority: 優先度
+  enums:
+    task:
+      priority:
+        low: 低
+        middle: 中
+        high: 高
+        top: 至急
 
   view:
     index:  一覧
@@ -38,6 +45,7 @@ ja:
     start: 着手
     finish: 完了
     search: 検索
+    priority: 優先度
 
 
   date:
