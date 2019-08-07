@@ -12,6 +12,7 @@
     <td><%= form.hidden_field :search, value:'true' %></td>
     <td><%= form.submit t('view.search') %></td>
     <td><%= link_to "終了期限でソートする", tasks_path(sort_expired: 'true') %></td>
+    <td><%= link_to "優先度でソートする", tasks_path(sort_priority: 'true') %></td>
     </tr>
 </table>
 <% end %>

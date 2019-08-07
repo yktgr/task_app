@@ -46,4 +46,10 @@ RSpec.feature "タスク管理機能", type: :feature do
     click_link "終了期限でソートする"
     expect(Task.order("expired_at DESC").map(&:id)).to eq [16, 15, 14]
   end
+
+  scenario "タスクが優先度の降順に並んでいるかのテスト" do
+    visit root_path
+    click_link "優先度でソートする"
+    expect(Task.order("priority DESC").map(&:id)).to eq [19, 18, 17]
+  end
 end
