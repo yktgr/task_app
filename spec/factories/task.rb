@@ -4,7 +4,7 @@ FactoryBot.define do
     content { 'Factoryコンテント1' }
     expired_at { '1/1' }
     status {'未着手'}
-    priority{'low'}    
+    priority{'low'}
       factory :second_task do
         title { 'Factoryタイトル2' }
         content { 'Factoryコンテント2' }
