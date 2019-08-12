@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_08_11_060042) do
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "expired_at", null: false
+    t.datetime "expired_at", default: -> { "now()" }
     t.string "status"
     t.integer "priority", null: false
     t.integer "user_id", null: false

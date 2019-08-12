@@ -20,7 +20,6 @@ RSpec.feature "ユーザー機能", type: :feature do
 
     scenario "ログイン機能" do
       visit root_path
-          fill_in 'session_name', with: 'test'
           fill_in 'session_email', with: 'test@test.com'
           fill_in 'session_password', with: 'test'
           click_button 'Login'
@@ -29,7 +28,6 @@ RSpec.feature "ユーザー機能", type: :feature do
 
     scenario "ログアウト機能" do
       visit root_path
-          fill_in 'session_name', with: 'test'
           fill_in 'session_email', with: 'test@test.com'
           fill_in 'session_password', with: 'test'
           click_button 'Login'
@@ -44,7 +42,6 @@ RSpec.feature "ユーザー機能", type: :feature do
 
     scenario "ログイン時のアクセス制限" do
       visit root_path
-      fill_in 'session_name', with: 'test2'
       fill_in 'session_email', with: 'test2@test.com'
       fill_in 'session_password', with: 'test2'
       click_button 'Login'

@@ -3,7 +3,6 @@ RSpec.feature "タスク管理機能", type: :feature do
   before do
     FactoryBot.create(:user)
       visit root_path
-          fill_in 'session_name', with: 'test'
           fill_in 'session_email', with: 'test@test.com'
           fill_in 'session_password', with: 'test'
           click_button 'Login'
