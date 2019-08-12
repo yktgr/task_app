@@ -1,8 +1,14 @@
 FactoryBot.define do
   factory :user do
-    task { nil }
-    name { "MyString" }
-    email { "MyString" }
-    password_digest { "MyString" }
+    id {10}
+    name { "test" }
+    email { "test@test.com" }
+    password { "test" }
+      factory :second_user do
+        id {2}
+        name { "test2" }
+        email { "test2@test.com" }
+        password { "test2" }
+      end
   end
 end

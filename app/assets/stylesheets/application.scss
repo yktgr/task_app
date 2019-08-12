@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+header{
+  a:visited { color:white; text-decoration:none }
+  a:hover { color:#00F9A9; text-decoration:none }
+  a:active { color:#00F9A9; text-decoration:none }
+  height: 50px;
+  font-size: 100%;
+  font-weight: bold;
+  background-color: #DDDDDD;
+}
+
+body{
+  width:100;
+}
+
+h1{
+  font-size:2rem;
+}
+
+ ul{
+   list-style: none;
+   color: white;
+ }
+
+li{
+  height: 50px;
+  margin-right: 25px;
+  line-height: 50px;
+  float:left;
+}
+
+ .table_style{
+   width: 100%;
+ }
+
+ .btn{
+   background-color:#00F9A9;
+   border: none;
+   margin-right: 5px;
+   text-align: bottom;
+   a:visited { color:white; text-decoration:none }
+   a:hover { color:#white; text-decoration:none }
+   a:active { color:#white; text-decoration:none }
+ }
+
+ .table_style th{
+   text-align: center;
+ }
+
+  .table_style tr{
+   text-align: center;
+   height: 45px;
+   border-bottom: solid 1px #BBBBBB;
+   width:100%;
+   vertical-align: middle;
+ }
+
+ .new_table tr{
+   text-align: left;
+   height: 45px;
+   vertical-align: middle;
+   margin-bottom: 5px;
+   border-bottom: solid 1px #BBBBBB;
+ }
+
+ .new_table th{
+   padding-right: 50px;
+ }

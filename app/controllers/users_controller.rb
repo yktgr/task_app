@@ -1,28 +1,26 @@
 class UsersController < ApplicationController
-  before_action: set_user:only:[:edit,:update]
+  before_action:access_user, only:[:show]
+  before_action:set_user, only:[:show]
   def new
+    if logged_in?
+      redirect_to tasks_path
+    else
     @user = User.new
+  end
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to tasks_path
     else
-      render 'new_user'
+      render 'new'
+    end
   end
 
-  def edit
-
-  end
-
-  def update
-   if  @user.update(user_params)
-   redirect_to 
-
-  end
-
-  def destroy
+  def show
+    redirect_to tasks_path if current_user != @user
   end
 
   private
@@ -32,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name,:email,:password_digest)
+    params.require(:user).permit(:name,:email,:password,:password_confirmation)
   end
 
 end

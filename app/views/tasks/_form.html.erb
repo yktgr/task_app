@@ -7,21 +7,21 @@
       </div>
     <% end %>
 
-<table>
+<table  class="new_table">
   <tr>
-  <th><%= form.label :title %></th>
+  <th><%= form.label t('view.title') %></th>
   <td><%= form.text_field :title %></td>
   </tr>
   <tr>
-  <th><%= form.label :content %></th>
+  <th><%= form.label t('view.content') %></th>
   <td><%= form.text_area :content %></td>
   </tr>
   <tr>
-  <th><%= form.label :expired_at %></th>
+  <th><%= form.label t('view.expired_at')  %></th>
   <td><%= form.date_field :expired_at %></td>
   </tr>
   <tr>
-  <th><%= form.label :status %></th>
+  <th><%= form.label t('view.status') %></th>
   <td><%= form.select :status,[nil,
     [t('view.not_start'),t('view.not_start')],
     [t('view.start'),t('view.start')],
@@ -29,13 +29,10 @@
       %></td>
   </tr>
   <tr>
-  <th><%= form.label :priority %></th>
+  <th><%= form.label t('view.priority') %></th>
   <td><%= form.select :priority, Task.priorities_i18n.keys.map{|k| [Task.priorities_i18n[k], k]} %></td>
   </tr>
-  <tr>
-  <td><%= form.submit %></td>
-</tr>
 </table>
-
-  <% end %>
+  <%= form.submit %>
   <%= link_to t('view.back'), :back %>
+  <% end %>
