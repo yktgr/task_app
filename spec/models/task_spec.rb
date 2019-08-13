@@ -1,19 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
+  before  do
+    FactoryBot.create(:user)
+  end
 
-  it "titleが空ならバリデーションが通らない" do
-    task = Task.new(title: '', content: '失敗テスト')
+  it "空があるとバリデーションが通らない" do
+    task = Task.new(
+                title: 'Factoryタイトル3' ,
+                content:'',
+                status:'着手',
+                expired_at: '3/1',
+                priority:'high')
     expect(task).not_to be_valid
   end
 
-  it "contentが空ならバリデーションが通らない" do
-    task = Task.new(title: '失敗テスト', content: '')
-    expect(task).not_to be_valid
-  end
-
-  it "titleとcontentに内容が記載されていればバリデーションが通る" do
-    task = Task.new(title: 'OK', content: 'OK')
+  it "すべて記載されていればバリデーションが通る" do
+    task = Task.new(
+                user_id:10,
+                title: 'OK' ,
+                content:'OK',
+                status:'着手',
+                expired_at: '3/1',
+                priority:'high')
     expect(task).to be_valid
   end
 

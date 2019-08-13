@@ -1,5 +1,14 @@
 require 'rails_helper'
 RSpec.feature "タスク管理機能", type: :feature do
+  before do
+    FactoryBot.create(:user)
+      visit root_path
+          fill_in 'session_email', with: 'test@test.com'
+          fill_in 'session_password', with: 'test'
+          click_button 'Login'
+          expect(page).to have_content 'ログインしました'
+  end
+
   background do
     FactoryBot.create(:task)
     FactoryBot.create(:second_task)
@@ -7,22 +16,20 @@ RSpec.feature "タスク管理機能", type: :feature do
   end
 
   scenario "タスク一覧のテスト" do
-    visit root_path
+    visit tasks_path
     expect(page).to have_content 'Factoryタイトル1'
     expect(page).to have_content 'Factoryコンテント1'
-    expect(page).to have_content '01-01'
     expect(page).to have_content 'Factoryタイトル2'
     expect(page).to have_content 'Factoryコンテント2'
-    expect(page).to have_content '02-01'
   end
 
   scenario "タスク作成のテスト" do
     visit new_task_path
-    fill_in 'タスク名', with: 'title_test'
-    fill_in '内容', with: 'content_test'
-    fill_in '終了期限', with: '1/31'
-    select '未着手',from:'ステータス'
-    select '低',from: '優先度'
+    fill_in 'task_title', with: 'title_test'
+    fill_in 'task_content', with: 'content_test'
+    fill_in 'task_expired_at', with: '1/31'
+    select '着手',from:'task_status'
+    select '低',from: 'task_priority'
     click_button '登録する'
     expect(page).to have_content 'content_test'
   end

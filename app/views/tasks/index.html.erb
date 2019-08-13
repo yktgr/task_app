@@ -1,7 +1,8 @@
 <h1><%= t('view.index') %></h1>
 <%= form_with(model: Task.new,local: true,method: :get,url:tasks_path) do |form| %>
-    <table>
-    <tr>
+<table class = "table_style">
+    <tr class="row">
+    <div class = "col-mid-12">
     <th><%= form.label t('view.title') %></th>
     <td><%= form.text_field :title %></td>
     <th><%= form.label t('view.status') %></th>
@@ -11,35 +12,44 @@
                                   [t('view.finish'),t('view.finish')]]  %></td>
     <td><%= form.hidden_field :search, value:'true' %></td>
     <td><%= form.submit t('view.search') %></td>
-    <td><%= link_to "終了期限でソートする", tasks_path(sort_expired: 'true') %></td>
-    <td><%= link_to "優先度でソートする", tasks_path(sort_priority: 'true') %></td>
+    <td class="btn btn-secondary"><%= link_to "終了期限でソートする", tasks_path(sort_expired: 'true') %></td>
+    <td class="btn btn-secondary"><%= link_to "優先度でソートする", tasks_path(sort_priority: 'true') %></td>
+    </div>
     </tr>
 </table>
 <% end %>
 
-  <table>
-    <tr>
+  <table class = "table_style">
+    <div class = "row">
+    <tr　class= "col-mid-12">
+    <th><%= t('view.name') %></th>
     <th><%= t('view.title') %></th>
     <th><%= t('view.content') %></th>
     <th><%= t('view.created_at') %></th>
     <th><%= t('view.expired_at') %></th>
     <th><%= t('view.status') %></th>
     <th><%= t('view.priority') %></th>
+    <th></th>
+    <th></th>
+    <th></th>
     </tr>
+    </div>
   <% @tasks.each do |task| %>
-    <tr>
+  <div class="row">
+    <tr class="col-mid-12">
+      <td><%= User.find_by(id: task.user_id).name %></td>
       <td><%= task.title %></td>
       <td><%= task.content %></td>
-      <td><%= task.created_at.strftime("%Y-%m-%d") %></td>
-      <td><%= task.expired_at.strftime("%Y-%m-%d") %></td>
+      <td><%= task.created_at.strftime("%Y/%m/%d") %></td>
+      <td><%= task.expired_at.strftime("%Y/%m/%d") %></td>
       <td><%= task.status %></td>
       <td><%= task.priority_i18n %></td>
-      <td><%= link_to t('view.show'),task_path(task.id) %></td>
-      <td><%= link_to t('view.edit'),edit_task_path(task.id) %></td>
-      <td><%= link_to t('view.delete'),task_path(task.id) ,method: :delete %></td>
+      <td class="btn btn-secondary"><%= link_to t('view.show'),task_path(task.id) %></td>
+      <td class="btn btn-secondary"><%= link_to t('view.edit'),edit_task_path(task.id) %></td>
+      <td class="btn btn-secondary"><%= link_to t('view.delete'),task_path(task.id) ,method: :delete %></td>
     </tr>
+  </div>
   <% end %>
   </table>
 
-  <%= link_to t('view.create'),new_task_path %>
   <%= paginate @tasks %>

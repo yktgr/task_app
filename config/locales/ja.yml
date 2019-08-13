@@ -7,18 +7,29 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+
+    # models:
+    #   task: タスク
+    # attributes:
+    #   task:
+    #     title: タスク名
+    #     content: 内容
+    #     id: ID
+    #     created_at: 登録日
+    #     updated_at: 更新日
+    #     expired_at: 終了期限
+    #     status: ステータス
+    #     priority: 優先度
+
     models:
-      task: タスク
+      user: ユーザー
     attributes:
-      task:
-        title: タスク名
-        content: 内容
-        id: ID
-        created_at: 登録日
-        updated_at: 更新日
-        expired_at: 終了期限
-        status: ステータス
-        priority: 優先度
+      user:
+        name: ユーザー
+        email: メール
+        password: パスワード
+        password_confirmation: パスワード確認
+
   enums:
     task:
       priority:
@@ -28,12 +39,11 @@ ja:
         top: 至急
 
   view:
-    index:  一覧
+    index: タスク一覧
     show: 詳細
-    new:  作成
     edit: 編集
     delete: 削除
-    create: 作成
+    create: タスク作成
     back: 戻る
     title: タスク名
     content: 内容
@@ -46,7 +56,8 @@ ja:
     finish: 完了
     search: 検索
     priority: 優先度
-
+    new: タスク作成
+    name: ユーザー
 
   date:
     abbr_day_names:

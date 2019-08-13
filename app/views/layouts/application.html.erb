@@ -4,10 +4,26 @@
     <title>TaskApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
+<div class="container">　
+  <header class = "row">
+    <% if logged_in? %>
+    <ul class ="col-md-12">
+      <li><%= link_to "Profile", user_path(current_user.id) %></li>
+      <li><%= link_to "Logout" ,session_path(current_user.id),method: :delete %></li>
+      <li><%= link_to t('view.create'),new_task_path %></li>
+      <li><%= link_to t('view.index'),tasks_path %></li>
+    </ul>
+    <% else %>
+    <ul class ="col-md-12">
+      <li><%= link_to "Sign up",new_user_path %></li>
+      <li><%= link_to "Login", new_session_path %></li>
+    </ul>
+    <% end %>
+  </header>
 
   <body>
       <% flash.each do |key,value| %>
@@ -15,4 +31,5 @@
       <% end %>
     <%= yield %>
   </body>
+    </div>
 </html>

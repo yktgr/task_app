@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  belongs_to :user
   validates :title, presence:true
   validates :content, presence:true
   enum priority: {low: 0, middle: 1, high:2, top:3}
