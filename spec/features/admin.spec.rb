@@ -33,7 +33,7 @@ RSpec.feature "管理機能", type: :feature do
     scenario "ユーザー詳細画面" do
       visit admin_users_path
       all('tr')[2].click_link '詳細'
-      expect(page).to have_content 'test@test.com'
+      expect(current_path).to eq "/tasks"
     end
 
     scenario "ユーザー編集" do
