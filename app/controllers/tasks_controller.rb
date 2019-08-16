@@ -4,24 +4,22 @@ class TasksController < ApplicationController
   before_action :edit_task, only: [:show, :edit, :update, :destroy]
   PER = 5
   def index
-        if params[:sort_expired]
-      # @tasks = Task.all.order(expired_at: :desc)
-          @tasks = current_user.tasks.all.expired.page(params[:page]).per(PER)
-        elsif params[:sort_priority]
-          @tasks =  current_user.tasks.all.priority.page(params[:page]).per(PER)
-        elsif params[:task] == nil
-          @tasks =  current_user.tasks.page(params[:page]).per(PER)
-        elsif params[:task][:title].present? && params[:task][:status].blank?
-          # @tasks = Task.where('title Like ?',params[:task][:title])
-          @tasks =  current_user.tasks.search_title(params[:task][:title]).page(params[:page]).per(PER)
-        elsif params[:task][:status].present? && params[:task][:title].blank?
-          # @tasks = Task.where('status = ?',params[:task][:status])
-          @tasks =  current_user.tasks.search_status(params[:task][:status]).page(params[:page]).per(PER)
-        elsif params[:task][:title].present? && params[:task][:status].present?
-          # @tasks = Task.where('title Like ? and status = ?',params[:task][:title],params[:task][:status])
-          @tasks =  current_user.tasks.search_all(params[:task][:title],params[:task][:status]).page(params[:page]).per(PER)
-        elsif params[:task][:search] == "true"
-          @tasks =  current_user.tasks.all.page(params[:page]).per(PER)
+    if params[:key]
+        @tasks = User.find(params[:key]).tasks.all.page(params[:page]).per(PER)
+      elsif params[:sort_expired]
+        @tasks = current_user.tasks.all.expired.page(params[:page]).per(PER)
+      elsif params[:sort_priority]
+        @tasks =  current_user.tasks.all.priority.page(params[:page]).per(PER)
+      elsif params[:task] == nil
+        @tasks =  current_user.tasks.page(params[:page]).per(PER)
+      elsif params[:task][:title].present? && params[:task][:status].blank?
+        @tasks =  current_user.tasks.search_title(params[:task][:title]).page(params[:page]).per(PER)
+      elsif params[:task][:status].present? && params[:task][:title].blank?
+        @tasks =  current_user.tasks.search_status(params[:task][:status]).page(params[:page]).per(PER)
+      elsif params[:task][:title].present? && params[:task][:status].present?
+        @tasks =  current_user.tasks.search_all(params[:task][:title],params[:task][:status]).page(params[:page]).per(PER)
+      elsif params[:task][:search] == "true"
+        @tasks =  current_user.tasks.all.page(params[:page]).per(PER)
     end
   end
 
@@ -73,6 +71,4 @@ class TasksController < ApplicationController
         redirect_to tasks_path
       end
   end
-
-
 end

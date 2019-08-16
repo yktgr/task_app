@@ -19,6 +19,7 @@ header{
   a:visited { color:white; text-decoration:none }
   a:hover { color:#00F9A9; text-decoration:none }
   a:active { color:#00F9A9; text-decoration:none }
+  color:white;
   height: 50px;
   font-size: 100%;
   font-weight: bold;
@@ -53,10 +54,11 @@ li{
    background-color:#00F9A9;
    border: none;
    margin-right: 5px;
-   text-align: bottom;
+   color:white;
    a:visited { color:white; text-decoration:none }
    a:hover { color:#white; text-decoration:none }
    a:active { color:#white; text-decoration:none }
+   margin-top: 5px;
  }
 
  .table_style th{
@@ -75,7 +77,6 @@ li{
    text-align: left;
    height: 45px;
    vertical-align: middle;
-   margin-bottom: 5px;
    border-bottom: solid 1px #BBBBBB;
  }
 

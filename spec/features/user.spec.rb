@@ -45,19 +45,7 @@ RSpec.feature "ユーザー機能", type: :feature do
       fill_in 'session_email', with: 'test2@test.com'
       fill_in 'session_password', with: 'test2'
       click_button 'Login'
-
-      all('tr')[2].click_link '詳細'
-      expect(page).to have_content '権限がありません'
-      all('tr')[2].click_link '編集'
-      expect(page).to have_content '権限がありません'
-      all('tr')[2].click_link '削除'
-      expect(page).to have_content '権限がありません'
-
-      all('tr')[3].click_link '詳細'
-      expect(page).to have_content '権限がありません'
-      all('tr')[3].click_link '編集'
-      expect(page).to have_content '権限がありません'
-      all('tr')[3].click_link '削除'
-      expect(page).to have_content '権限がありません'
+      visit user_path(id:10)
+      expect(current_path).to eq "/tasks"
     end
 end

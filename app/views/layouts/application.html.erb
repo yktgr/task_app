@@ -10,7 +10,13 @@
 
 <div class="container">　
   <header class = "row">
-    <% if logged_in? %>
+
+    <% if logged_in? && current_user.admin == true %>
+    <ul class ="col-md-12">
+      <li><%= link_to "Logout" ,session_path(current_user.id),method: :delete %></li>
+      <li><%= link_to "ユーザー管理",admin_users_path %></li>
+    </ul>
+    <% elsif logged_in? %>
     <ul class ="col-md-12">
       <li><%= link_to "Profile", user_path(current_user.id) %></li>
       <li><%= link_to "Logout" ,session_path(current_user.id),method: :delete %></li>
@@ -23,6 +29,7 @@
       <li><%= link_to "Login", new_session_path %></li>
     </ul>
     <% end %>
+
   </header>
 
   <body>
