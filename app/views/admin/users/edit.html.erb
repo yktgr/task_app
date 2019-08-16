@@ -1,0 +1,15 @@
+<h1>ユーザー<%= t('view.edit') %></h1>
+<%= form_with(model: [:admin,@user],local: true) do |f| %>
+<table  class="new_table">
+  <tr>
+  <th><%= t('view.name') %></th>
+  <td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+  <th><%= t('view.email')  %></th>
+  <td><%= f.text_field:email %></td>
+  </tr>
+</table>
+<%= f.submit %>
+<%= link_to t('view.back'), :back %>
+<% end %>
