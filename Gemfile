@@ -29,7 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'enum_help'
 gem 'kaminari', '~> 0.17.0'
 gem 'jquery-rails'
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap-sass', '~> 3.4.1'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
