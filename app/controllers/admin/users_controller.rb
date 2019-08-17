@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
-  before_action:access_user, only:[:show]
+  before_action:require_admin
+  before_action:access_user
   before_action:set_user, only:[:edit,:update,:destroy,:show]
-
 
   def index
     @users = User.all.includes(:tasks)
@@ -21,8 +21,12 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to admin_users_path, notice: "削除しました"
+    if current_user != @user
+      @user.destroy
+      redirect_to admin_users_path, notice: "削除しました"
+    else
+      redirect_to admin_users_path, notice: "このユーザーは削除できません"
+    end
   end
 
   def edit
@@ -44,4 +48,7 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:name,:email,:password,:password_confirmation,:admin)
   end
 
+  def require_admin
+      raise Forbidden unless current_user.admin?
+  end
 end
