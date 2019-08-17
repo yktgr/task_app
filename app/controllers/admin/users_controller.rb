@@ -3,7 +3,6 @@ class Admin::UsersController < ApplicationController
   before_action:access_user
   before_action:set_user, only:[:edit,:update,:destroy,:show]
 
-
   def index
     @users = User.all.includes(:tasks)
   end
@@ -52,6 +51,4 @@ class Admin::UsersController < ApplicationController
   def require_admin
       raise Forbidden unless current_user.admin?
   end
-
-
 end
