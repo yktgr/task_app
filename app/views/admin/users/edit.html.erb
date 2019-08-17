@@ -2,12 +2,16 @@
 <%= form_with(model: [:admin,@user],local: true) do |f| %>
 <table  class="new_table">
   <tr>
-  <th><%= t('view.name') %></th>
+  <th><%= User.human_attribute_name(:name) %></th>
   <td><%= f.text_field :name %></td>
   </tr>
   <tr>
-  <th><%= t('view.email')  %></th>
+  <th><%= User.human_attribute_name(:email)   %></th>
   <td><%= f.text_field:email %></td>
+  </tr>
+  <tr>
+  <th><%= User.human_attribute_name(:admin)   %></th>
+  <td><%= f.select :admin,[true,false] %></td>
   </tr>
 </table>
 <%= f.submit %>

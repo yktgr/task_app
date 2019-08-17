@@ -3,10 +3,18 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def access_user
-    if session[:user_id] == nil
-      flash[:notice] = "ログインが必要です"
-      redirect_to new_session_path
-    end
+      redirect_to new_session_path,flash[:notice] = "ログインが必要です" unless session[:user_id] != nil
   end
 
+class Forbidden < ActionController::ActionControllerError
+end
+
+  rescue_from Forbidden, with: :rescue403
+
+  private
+
+  def rescue403(e)
+    @exception = e
+      render 'admin/forbbiden' , status:403
+  end
 end

@@ -5,4 +5,9 @@ class User < ApplicationRecord
   format:{with:/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
   before_validation{email.downcase!}
   has_secure_password
+  before_destroy do
+      if self.admin? && User.where(admin:true).count == 1
+          throw :abort
+      end
+  end
 end

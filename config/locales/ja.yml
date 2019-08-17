@@ -8,19 +8,19 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
 
-    models:
-      task: タスク
-    attributes:
-      task:
-        title: タスク名
-        content: 内容
-        id: ID
-        created_at: 登録日
-        updated_at: 更新日
-        expired_at: 終了期限
-        status: ステータス
-        priority: 優先度
-
+  #   models:
+  #     task: タスク
+  #   attributes:
+  #     task:
+  #       title: タスク名
+  #       content: 内容
+  #       id: ID
+  #       created_at: 登録日
+  #       updated_at: 更新日
+  #       expired_at: 終了期限
+  #       status: ステータス
+  #       priority: 優先度
+  #
     models:
       user: ユーザー
     attributes:
@@ -29,9 +29,9 @@ ja:
         email: メール
         password: パスワード
         password_confirmation: パスワード確認
-        admin: 管理権限
         created_at: 登録日
         updated_at: 更新日
+        admin: 管理権限
 
   enums:
     task:
@@ -40,6 +40,7 @@ ja:
         middle: 中
         high: 高
         top: 至急
+
 
   view:
     index: タスク一覧
@@ -62,6 +63,8 @@ ja:
     new: タスク作成
     name: ユーザー
     count: タスク数
+    true: 管理者
+    false: ユーザー
 
   date:
     abbr_day_names:
