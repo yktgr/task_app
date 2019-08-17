@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def access_user
-      redirect_to new_session_path,flash[:notice] = "ログインが必要です" unless session[:user_id] != nil
+      redirect_to new_session_path, notice: "ログインが必要です" unless session[:user_id] != nil
   end
 
 class Forbidden < ActionController::ActionControllerError
