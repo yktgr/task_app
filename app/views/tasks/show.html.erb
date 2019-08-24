@@ -9,6 +9,13 @@
       <td><%= @task.created_at.strftime("%Y-%m-%d") %></td></tr>
     <tr><th><%= t('view.expired_at') %></th>
       <td><%= @task.expired_at.strftime("%Y-%m-%d") %></td></tr>
+      <% if @labels.present? %>
+      <tr>
+        <th><%= :label %></th>
+          <% @labels.each do |label| %>
+              <td class="btn btn-secondary"><%= label.tag %></td>
+          <% end %>
+      </tr>
+        <% end %>
   </table>
-
   <%= link_to t('view.back'), :back %>

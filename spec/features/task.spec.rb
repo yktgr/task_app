@@ -45,18 +45,27 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     visit root_path
-     expect(Task.order("created_at DESC").map(&:id)).to eq [13, 12, 11]
+     expect(Task.order("created_at DESC").map(&:id)).to eq [12, 11, 10]
   end
 
   scenario "タスクが終了期限の降順に並んでいるかのテスト" do
     visit root_path
     click_link "終了期限でソートする"
-    expect(Task.order("expired_at DESC").map(&:id)).to eq [16, 15, 14]
+    expect(Task.order("expired_at DESC").map(&:id)).to eq [12, 11, 10]
   end
 
   scenario "タスクが優先度の降順に並んでいるかのテスト" do
     visit root_path
     click_link "優先度でソートする"
-    expect(Task.order("priority DESC").map(&:id)).to eq [19, 18, 17]
+    expect(Task.order("priority DESC").map(&:id)).to eq [12, 11, 10]
+  end
+
+  scenario "ラベルの検索機能" do
+    visit root_path
+    task1 = FactoryBot.create(:association_task)
+    FactoryBot.create(:task_label,task: task1)
+    select 'ラベル3',from: 'task_label_id'
+    click_button "検索"
+    expect(page).to have_content 'Factoryコンテント4'
   end
 end
