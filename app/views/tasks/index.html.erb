@@ -11,7 +11,14 @@
                                   [t('view.start'),t('view.start')],
                                   [t('view.finish'),t('view.finish')]]  %></td>
     <td><%= form.hidden_field :search, value:'true' %></td>
-    <td><%= form.submit t('view.search') %></td>
+    <th><%= form.label :label %></th>
+    <td><%= form.select :label_id,[ nil,
+                                  [t('view.label1'),1],
+                                  [t('view.label2'),2],
+                                  [t('view.label3'),3],
+                                  [t('view.label4'),4],
+                                  [t('view.label5'),5]] %></td>
+  <td><%= form.submit t('view.search') %></td>
     <td class="btn btn-secondary"><%= link_to "終了期限でソートする", tasks_path(sort_expired: 'true') %></td>
     <td class="btn btn-secondary"><%= link_to "優先度でソートする", tasks_path(sort_priority: 'true') %></td>
     </div>
@@ -21,8 +28,7 @@
 
   <table class = "table_style">
     <div class = "row">
-    <tr　class= "col-mid-12">
-    <th><%= t('view.name') %></th>
+    <tr　class = "col-mid-12">
     <th><%= t('view.title') %></th>
     <th><%= t('view.content') %></th>
     <th><%= t('view.created_at') %></th>
@@ -32,12 +38,12 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
     </tr>
     </div>
   <% @tasks.each do |task| %>
   <div class="row">
     <tr class="col-mid-12">
-      <td><%= User.find_by(id: task.user_id).name %></td>
       <td><%= task.title %></td>
       <td><%= task.content %></td>
       <td><%= task.created_at.strftime("%Y/%m/%d") %></td>

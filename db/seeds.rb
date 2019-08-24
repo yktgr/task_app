@@ -29,3 +29,9 @@ Task.create(title:"test",content:"test",status:"着手",priority:"high",user_id:
 Task.create(title:"test",content:"test",status:"着手",priority:"high",user_id:5)
 Task.create(title:"test",content:"test",status:"着手",priority:"high",user_id:5)
 Task.create(title:"test",content:"test",status:"着手",priority:"high",user_id:5)
+
+Label.create(id:1,tag:"label1")
+Label.create(id:2,tag:"label2")
+Label.create(id:3,tag:"label3")
+Label.create(id:4,tag:"label4")
+Label.create(id:5,tag:"label5")
