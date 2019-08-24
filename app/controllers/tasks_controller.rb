@@ -6,8 +6,7 @@ class TasksController < ApplicationController
 # require byebug
   def index
     if params[:key]
-        @tasks = current_user.find(params[:key]).tasks.all.page(params[:page]).per(PER)
-
+        @tasks = User.find(params[:key]).tasks.all.page(params[:page]).per(PER)
       elsif params[:sort_expired]
         @tasks = current_user.tasks.all.expired.page(params[:page]).per(PER)
       elsif params[:sort_priority]
@@ -18,7 +17,6 @@ class TasksController < ApplicationController
         labels =  TaskLabel.where('label_id = ?',params[:task][:label_id]).pluck(:task_id)
         tasks = current_user.tasks.find(labels)
         @tasks = Kaminari.paginate_array(tasks).page(params[:page]).per(PER)
-
       # elsif params[:task][:label_id].present?
       # labels =  TaskLabel.where('label_id = ?',params[:task][:label_id]).pluck(:task_id)
       # tasks = current_user.tasks.search_label(labels)
